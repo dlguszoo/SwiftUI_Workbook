@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OtherView: View {
     
-    private var signupViewModel: SignupViewModel = .init()
+    private var viewModel: OtherViewModel = .init()
     
     var body: some View {
         VStack {
@@ -52,7 +52,7 @@ struct OtherView: View {
     private var myMenuView: some View {
         VStack {
             (
-            Text("\(signupViewModel.nickname.isEmpty ? "(작성한 닉네임)" : signupViewModel.nickname)")
+                Text(viewModel.getNickName())
                     .font(.PretendardSemiBold(size: 24))
                     .foregroundStyle(Color.green01)
                 +
