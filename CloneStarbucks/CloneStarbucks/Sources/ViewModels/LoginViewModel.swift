@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class LoginViewModel: ObservableObject {
+    @Published var loginModel: LoginModel
+    
+    init(loginModel: LoginModel) {
+        self.loginModel = loginModel
+    }
+}

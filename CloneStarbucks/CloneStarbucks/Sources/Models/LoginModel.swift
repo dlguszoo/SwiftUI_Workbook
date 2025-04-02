@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel {
+struct LoginModel {
     var id: String
     var pwd: String
 }

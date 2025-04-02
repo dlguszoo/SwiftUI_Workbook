@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var id = ""
-    @State private var pw = ""
+    
+    enum Field: Hashable {
+        case id
+        case pw
+    }
+    
+    @ObservedObject var viewModel: LoginViewModel
+    @FocusState private var focusedField: Field?
+    
+    init() {
+        self._viewModel = .init(wrappedValue: .init(loginModel: .init(id: "", pwd: "")))
+    }
     
     var body: some View {
         VStack {
@@ -30,19 +40,16 @@ struct LoginView: View {
     }
     
     private var topTitleGroup: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 19) {
             Image("StarbucksLogo")
                 .resizable()
                 .frame(width: 97, height: 95)
-            
-            Spacer().frame(height: 28)
+                .padding(.bottom, 9)
             
             Text("안녕하세요.\n스타벅스입니다.")
                 .font(.PretendardExtraBold(size: 24))
                 .foregroundStyle(Color.black03)
                 .kerning(2)
-            
-            Spacer().frame(height: 19)
             
             Text("회원 서비스 이용을 위해 로그인 해주세요")
                 .font(.PretendardMedium(size: 16))
@@ -51,34 +58,36 @@ struct LoginView: View {
     }
     
     private var middleLoginGroup: some View {
-        VStack {
-            TextField(
-                "id",
-                text: $id,
-                prompt: Text("아이디")
-                    .font(.PretendardRegular(size: 13))
-                    .foregroundStyle(Color.black01)
-            )
-            .frame(height: 16)
-            .tint(Color.green01)
-            Divider()
-                .foregroundStyle(Color.gray00)
+        VStack(spacing: 47) {
+            VStack {
+                TextField(
+                    "id",
+                    text: $viewModel.loginModel.id,
+                    prompt: Text("아이디")
+                        .font(.PretendardRegular(size: 13))
+                        .foregroundStyle(Color.black01)
+                )
+                .frame(height: 16)
+                .tint(Color.green01)
+                .focused($focusedField, equals: .id)
+                Divider()
+                    .background(focusedField == .id ? Color.green01 : Color.gray00)
+            }
             
-            Spacer().frame(height: 47)
-            
-            SecureField(
-                "pw",
-                text: $pw,
-                prompt: Text("비밀번호")
-                    .font(.PretendardRegular(size: 13))
-                    .foregroundStyle(Color.black01)
-            )
-            .frame(height: 16)
-            .tint(Color.green01)
-            Divider()
-                .foregroundStyle(Color.gray00)
-            
-            Spacer().frame(height: 47)
+            VStack {
+                SecureField(
+                    "pw",
+                    text: $viewModel.loginModel.pwd,
+                    prompt: Text("비밀번호")
+                        .font(.PretendardRegular(size: 13))
+                        .foregroundStyle(Color.black01)
+                )
+                .frame(height: 16)
+                .tint(Color.green01)
+                .focused($focusedField, equals: .pw)
+                Divider()
+                    .background(focusedField == .pw ? Color.green01 : Color.gray00)
+            }
             
             Button(action: {
                 print("로그인버튼 눌림")
@@ -96,17 +105,13 @@ struct LoginView: View {
     }
     
     private var bottomSocialLoginGroup: some View {
-        VStack { // Spacing을 주는 것보다 spacing:19 이런식으로 주는 것이 나은 것 같음.
+        VStack(spacing: 19) { // Spacing을 주는 것보다 spacing:19 이런식으로 주는 것이 나은 것 같음.
             Text("이메일로 회원가입하기")
                 .font(.PretendardRegular(size: 12))
                 .foregroundStyle(Color.gray04)
                 .underline()
             
-            Spacer().frame(height: 19)
-            
             Image("kakaoLogin")
-            
-            Spacer().frame(height: 19)
             
             Image("appleLogin")
         }

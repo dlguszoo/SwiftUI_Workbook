@@ -6,15 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		CF4AEEA52D8C313E000656F5 /* ZStackExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4AEEA42D8C313E000656F5 /* ZStackExample.swift */; };
-		CF4AEEA72D8C31C2000656F5 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4AEEA62D8C31C2000656F5 /* CustomStackView.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		CF4AEE732D8AF76E000656F5 /* Week1Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week1Exercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF4AEEA42D8C313E000656F5 /* ZStackExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStackExample.swift; sourceTree = "<group>"; };
-		CF4AEEA62D8C31C2000656F5 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -39,8 +32,6 @@
 		CF4AEE6A2D8AF76E000656F5 = {
 			isa = PBXGroup;
 			children = (
-				CF4AEEA42D8C313E000656F5 /* ZStackExample.swift */,
-				CF4AEEA62D8C31C2000656F5 /* CustomStackView.swift */,
 				CF4AEE752D8AF76E000656F5 /* Week1Exercise */,
 				CF4AEE742D8AF76E000656F5 /* Products */,
 			);
@@ -128,8 +119,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4AEEA72D8C31C2000656F5 /* CustomStackView.swift in Sources */,
-				CF4AEEA52D8C313E000656F5 /* ZStackExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
