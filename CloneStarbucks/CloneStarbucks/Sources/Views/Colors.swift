@@ -19,6 +19,8 @@ extension Color {
     public static let gray05 = Color("gray05")
     public static let gray06 = Color("gray06")
     public static let gray07 = Color("gray07")
+    public static let gray08 = Color("gray08")
+    public static let tabBarGray = Color("tabBarGray")
     
     public static let green00 = Color("green00")
     public static let green01 = Color("green01")

@@ -13,14 +13,14 @@ struct OtherView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack { //LabeledContent 사용해보기!
                 Text("Other")
                     .font(.PretendardExtraBold(size: 24))
                 
                 Spacer()
                 
                 Button(action: {
-                    print("로그아웃")
+                    viewModel.isLoggedIn = false
                 }, label: {
                     Image("logout")
                 })
@@ -43,8 +43,6 @@ struct OtherView: View {
                 
                 Spacer()
             }
-//            .padding(.top, 41)
-//            .padding(.bottom, 41)
             .background(Color.white01)
         }
     }
@@ -76,7 +74,7 @@ struct OtherView: View {
                     print("나만의 메뉴")
                 }
             }
-            .padding(.top, 20)
+            .padding(.top, 20) // padding 대신 전체 VStack의 spacing으로!
         }
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity)

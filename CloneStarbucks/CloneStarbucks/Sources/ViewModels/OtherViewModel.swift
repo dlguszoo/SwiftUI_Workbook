@@ -10,6 +10,7 @@ import SwiftUI
 
 class OtherViewModel {
     @AppStorage("nickName") var nickname: String = ""
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     
     public func getNickName() -> String {
         return nickname.isEmpty ? "(작성한 닉네임)" : nickname

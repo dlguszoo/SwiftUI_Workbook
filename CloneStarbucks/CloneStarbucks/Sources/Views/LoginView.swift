@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     
+    @State private var path = NavigationPath()
+    
     enum Field: Hashable {
         case id
         case pw
@@ -22,20 +24,26 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack {
-            topTitleGroup
-                .padding(.leading, 19)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Spacer().frame(height: 90)
-            
-            middleLoginGroup
-                .padding(.horizontal, 19)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            Spacer().frame(height: 90)
-            
-            bottomSocialLoginGroup
+        NavigationStack(path: $path) {
+            VStack {
+                topTitleGroup
+                    .padding(.leading, 19)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Spacer().frame(height: 90)
+                
+                middleLoginGroup
+                    .padding(.horizontal, 19)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                Spacer().frame(height: 90)
+                
+                bottomSocialLoginGroup
+            }
+            .navigationDestination(for: String.self) { value in
+                SignupView()
+                    .toolbar(.hidden)
+            }
         }
     }
     
@@ -90,7 +98,16 @@ struct LoginView: View {
             }
             
             Button(action: {
-                print("로그인버튼 눌림")
+                if viewModel.loginModel.id == viewModel.email && viewModel.loginModel.pwd == viewModel.password {
+                    viewModel.isLoggedIn = true
+                    //router.push(.signIn)
+                } else {
+                    print("로그인에 실패")
+                    print(viewModel.loginModel.id)
+                    print(viewModel.email)
+                    print(viewModel.loginModel.pwd)
+                    print(viewModel.password)
+                }
             }, label: {
                 Text("로그인하기")
                     .frame(height: 46)
@@ -106,10 +123,14 @@ struct LoginView: View {
     
     private var bottomSocialLoginGroup: some View {
         VStack(spacing: 19) { // Spacing을 주는 것보다 spacing:19 이런식으로 주는 것이 나은 것 같음.
-            Text("이메일로 회원가입하기")
-                .font(.PretendardRegular(size: 12))
-                .foregroundStyle(Color.gray04)
-                .underline()
+            Button(action: {
+                path.append("SignUp")
+            }, label: {
+                Text("이메일로 회원가입하기")
+                    .font(.PretendardRegular(size: 12))
+                    .foregroundStyle(Color.gray04)
+                    .underline()
+            })
             
             Image("kakaoLogin")
             

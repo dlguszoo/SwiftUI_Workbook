@@ -2,9 +2,16 @@ import SwiftUI
 
 @main
 struct CloneStarbucksApp: App {
+    
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            if isLoggedIn {
+                BaseTabBarView()
+            } else {
+                LoginView()
+            }
         }
     }
 }

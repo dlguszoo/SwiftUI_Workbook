@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomTextField: View {
     let spaceholder: String
     @Binding var text: String
+    let field: SignupView.Field
+    var focusedField: FocusState<SignupView.Field?>.Binding //FocusState는 **자체적으로 특수한 타입 FocusState<...>**을 갖고 있어서, 그냥 일반 @Binding처럼 넘김 X
     
     var body: some View {
         VStack(spacing: 9) {
@@ -22,8 +24,9 @@ struct CustomTextField: View {
             )
             .frame(height: 16)
             .tint(Color.green01)
+            .focused(focusedField, equals: field)
             Divider()
-                .background(Color.gray00)
+                .background(focusedField.wrappedValue == field ? Color.green01 : Color.gray00)
         }
     }
 }
