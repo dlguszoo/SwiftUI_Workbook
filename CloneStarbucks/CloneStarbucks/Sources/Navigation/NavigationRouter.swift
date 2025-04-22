@@ -15,6 +15,10 @@ class NavigationRouter: ObservableObject {
         path.append(route)
     }
     
+    func otherPush(_ route: OtherRoute) {
+        path.append(route)
+    }
+    
     /// 마지막 화면 제거 (Pop 기능)
     func pop() {
         if !path.isEmpty {

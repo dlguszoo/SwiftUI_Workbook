@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class OtherViewModel {
+class OtherViewModel: ObservableObject {
     @AppStorage("nickName") var nickname: String = ""
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     

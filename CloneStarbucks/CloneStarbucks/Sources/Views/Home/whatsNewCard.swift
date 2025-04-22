@@ -40,6 +40,7 @@ struct whatsNewCard: View {
                     .multilineTextAlignment(.leading)
             }
             .frame(width: 242, height: 249)
+            //frame을 주더라도 max만 줘야함!!
         }
     }
 }

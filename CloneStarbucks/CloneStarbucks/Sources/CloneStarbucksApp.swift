@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct CloneStarbucksApp: App {
@@ -13,5 +14,6 @@ struct CloneStarbucksApp: App {
                 LoginView()
             }
         }
+        .modelContainer(for: [ReceiptModel.self, ReceiptImageModel.self])
     }
 }

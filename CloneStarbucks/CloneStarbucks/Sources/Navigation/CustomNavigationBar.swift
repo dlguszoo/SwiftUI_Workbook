@@ -10,9 +10,13 @@ import SwiftUI
 struct CustomNavigationBar: View {
     @Environment(\.presentationMode) var presentationMode
     let title: String
+    let rightIcon: String
+    let rightAction: () -> Void
     
-    init(title: String) {
+    init(title: String, rightIcon: String = "", rightAction: @escaping () -> Void = {} ) {
         self.title = title
+        self.rightIcon = rightIcon
+        self.rightAction = rightAction
     }
     
     var body: some View {
@@ -30,8 +34,12 @@ struct CustomNavigationBar: View {
             
             Spacer()
             
-            Color.clear
-                .frame(width: 24, height: 24)
+            Button(action: {
+                rightAction()
+            }, label: {
+                Image(systemName: rightIcon)
+            })
+            .frame(width: 24, height: 24)
         }
         .padding()
         .tint(Color.black)
@@ -39,5 +47,7 @@ struct CustomNavigationBar: View {
 }
 
 #Preview {
-    CustomNavigationBar(title: "가입하기")
+    CustomNavigationBar(title: "전자영수증", rightIcon: "plus") {
+        print("클릭")
+    }
 }

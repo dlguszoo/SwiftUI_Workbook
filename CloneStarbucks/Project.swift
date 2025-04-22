@@ -25,7 +25,10 @@ let project = Project(
                                    "Pretendard-Regular.otf",
                                    "Pretendard-SemiBold.otf",
                                    "Pretendard-Thin.otf"
-                    ]
+                    ],
+                    
+                    "NSPhotoLibraryUsageDescription": "사진 앨범 접근 권한이 필요합니다.",
+                    "NSCameraUsageDescription": "카메라 접근 권한이 필요합니다."
                 ]
             ),
             sources: ["CloneStarbucks/Sources/**"],
